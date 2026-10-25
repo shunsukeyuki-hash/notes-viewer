@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#1f2937">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<title>ノートビューア</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <button id="back" class="icon" aria-label="戻る" hidden>←</button>
+  <h1 id="title">ノート</h1>
+  <button id="refresh" class="icon" aria-label="更新">⟳</button>
+  <button id="settings" class="icon" aria-label="設定">⚙</button>
+</header>
+
+<main>
+  <div id="statusbar">
+    <span id="status"></span>
+    <button id="signin" hidden>Googleでログイン</button>
+  </div>
+  <ul id="list"></ul>
+  <div id="viewer" hidden></div>
+</main>
+
+<dialog id="dlg">
+  <form method="dialog">
+    <h2>設定</h2>
+    <label>Googleドライブのフォルダ URL（または ID）
+      <input id="folderInput" type="text" inputmode="url" autocomplete="off"
+             placeholder="https://drive.google.com/drive/folders/...">
+    </label>
+    <menu>
+      <button id="signout" type="button" class="sub">ログアウト</button>
+      <button value="cancel" class="sub">閉じる</button>
+      <button value="save">保存</button>
+    </menu>
+  </form>
+</dialog>
+
+<script src="config.js"></script>
+<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

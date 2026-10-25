@@ -1,0 +1,90 @@
+:root {
+  --bg: #f3f4f6;
+  --fg: #111827;
+  --sub: #6b7280;
+  --card: #ffffff;
+  --line: #e5e7eb;
+  --accent: #2563eb;
+  --bar: #1f2937;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #111827;
+    --fg: #f3f4f6;
+    --sub: #9ca3af;
+    --card: #1f2937;
+    --line: #374151;
+    --accent: #60a5fa;
+    --bar: #0b1220;
+  }
+}
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--bg); color: var(--fg); }
+body { font-family: system-ui, -apple-system, "Noto Sans JP", sans-serif; }
+
+header {
+  position: sticky; top: 0; z-index: 10;
+  display: flex; align-items: center; gap: 4px;
+  height: 52px; padding: 0 8px;
+  background: var(--bar); color: #fff;
+}
+header h1 {
+  flex: 1; margin: 0; font-size: 17px; font-weight: 600;
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+}
+button.icon {
+  width: 44px; height: 44px; border: 0; border-radius: 50%;
+  background: transparent; color: inherit; font-size: 22px;
+}
+button.icon:active { background: rgba(255,255,255,.15); }
+
+#statusbar {
+  display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 8px 14px; min-height: 12px; font-size: 13px; color: var(--sub);
+}
+#statusbar:has(#status:empty):has(#signin[hidden]) { display: none; }
+#signin {
+  padding: 8px 14px; border: 0; border-radius: 8px;
+  background: var(--accent); color: #fff; font-size: 14px; font-weight: 600;
+}
+
+#list { list-style: none; margin: 0; padding: 0 10px 24px; }
+#list li { margin-bottom: 8px; }
+#list button {
+  display: flex; align-items: center; gap: 12px; width: 100%;
+  padding: 14px; text-align: left;
+  border: 1px solid var(--line); border-radius: 12px;
+  background: var(--card); color: var(--fg); font-size: 16px;
+}
+#list button:active { background: var(--line); }
+#list .ico { font-size: 22px; }
+#list .meta { flex: 1; min-width: 0; }
+#list .name { display: block; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+#list .date { display: block; margin-top: 2px; font-size: 12px; color: var(--sub); }
+
+#viewer { padding: 0; }
+#viewer canvas.page {
+  display: block; margin: 0 auto 6px; background: #fff;
+  box-shadow: 0 1px 3px rgba(0,0,0,.25);
+  touch-action: pan-x pan-y pinch-zoom;
+}
+
+dialog {
+  width: min(92vw, 420px); padding: 18px;
+  border: 0; border-radius: 14px;
+  background: var(--card); color: var(--fg);
+}
+dialog::backdrop { background: rgba(0,0,0,.5); }
+dialog h2 { margin: 0 0 12px; font-size: 18px; }
+dialog label { display: block; font-size: 13px; color: var(--sub); }
+dialog input {
+  width: 100%; margin-top: 6px; padding: 12px;
+  border: 1px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--fg); font-size: 15px;
+}
+dialog menu { display: flex; justify-content: flex-end; gap: 8px; margin: 16px 0 0; padding: 0; }
+dialog button {
+  padding: 10px 16px; border: 0; border-radius: 8px;
+  background: var(--accent); color: #fff; font-size: 15px;
+}
+dialog button.sub { background: transparent; color: var(--fg); border: 1px solid var(--line); }
